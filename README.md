@@ -1,4 +1,6 @@
-# Flight search
+# Flight Search Service
+
+[![Build Status](https://travis-ci.org/enthalpystudios/travel-search-service.svg?branch=master)](https://travis-ci.org/enthalpystudios/travel-search-service)
 
 ## Problem
 
