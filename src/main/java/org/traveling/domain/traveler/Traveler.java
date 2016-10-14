@@ -21,15 +21,15 @@ public class Traveler {
     }
 
     public boolean isAdult() {
-        return this.travelerType.equals(TravelerType.ADULT);
+        return this.travelerType.isAdult();
     }
 
     public boolean isChild() {
-        return this.travelerType.equals(TravelerType.CHILD);
+        return this.travelerType.isChild();
     }
 
     public boolean isInfant() {
-        return this.travelerType.equals(TravelerType.INFANT);
+        return this.travelerType.isInfant();
     }
 
     public TravelerType getTravelerType() {
