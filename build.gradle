@@ -8,6 +8,7 @@ task wrapper(type: Wrapper) {
 
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: "jacoco"
 
 sourceCompatibility = 1.8
 
@@ -15,6 +16,19 @@ mainClassName = "org.traveling.FlightSearchApp"
 
 run {
     args = [ "BCN", "MAD", 1, 2, 0, "13-10-2016" ]
+}
+
+jacoco {
+    toolVersion = "0.7.6.201602180812"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
+    }
 }
 
 repositories {
