@@ -13,7 +13,7 @@ public class DaysDeparturePriceRule implements PriceRule<Flight> {
     @Override
     public PriceOptimisation apply(PriceOptimisation currentPriceOptimisation, Flight lob, Traveler traveler, LocalDate departure) {
 
-        if (traveler.isInfant()) return currentPriceOptimisation;
+        if (traveler.getTravelerType().isInfant()) return currentPriceOptimisation;
 
         long daysPriorToDeparture = ChronoUnit.DAYS.between(LocalDate.now(), departure);
         Integer percentageToApply = percentageToApplyForDays((int) daysPriorToDeparture);

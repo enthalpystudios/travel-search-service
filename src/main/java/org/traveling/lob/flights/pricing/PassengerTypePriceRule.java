@@ -13,16 +13,16 @@ public class PassengerTypePriceRule implements PriceRule<Flight> {
 
     private final Map<Airline, Float> airlineInfantPricesDataSet;
 
-    public PassengerTypePriceRule(Map<Airline, Float> airlineInfantPricesDataSet) {
+    public PassengerTypePriceRule(final Map<Airline, Float> airlineInfantPricesDataSet) {
         this.airlineInfantPricesDataSet = airlineInfantPricesDataSet;
     }
 
     @Override
     public PriceOptimisation apply(PriceOptimisation currentPriceOptimisation, Flight lob, Traveler traveler, LocalDate departure) {
 
-        if (traveler.isAdult()) return currentPriceOptimisation;
-        if (traveler.isChild()) return currentPriceOptimisation.update(currentPriceOptimisation.getOptimised() * 67 / 100, "67%");
-        if (traveler.isInfant()) return currentPriceOptimisation.update(airlineInfantPricesDataSet.get(lob.getAirline()), "Infant");
+        if (traveler.getTravelerType().isAdult()) return currentPriceOptimisation;
+        if (traveler.getTravelerType().isChild()) return currentPriceOptimisation.update(currentPriceOptimisation.getOptimised() * 67 / 100, "67%");
+        if (traveler.getTravelerType().isInfant()) return currentPriceOptimisation.update(airlineInfantPricesDataSet.get(lob.getAirline()), "Infant");
 
         return currentPriceOptimisation;
     }

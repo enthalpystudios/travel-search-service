@@ -1,10 +1,9 @@
 package org.traveling.domain.traveler;
 
 public class Traveler {
+    private final TravelerType travelerType;
 
-    private TravelerType travelerType;
-
-    private Traveler(TravelerType travelerType) {
+    public Traveler(final TravelerType travelerType) {
         this.travelerType = travelerType;
     }
 
@@ -18,18 +17,6 @@ public class Traveler {
 
     public static Traveler child() {
         return new Traveler(TravelerType.CHILD);
-    }
-
-    public boolean isAdult() {
-        return this.travelerType.isAdult();
-    }
-
-    public boolean isChild() {
-        return this.travelerType.isChild();
-    }
-
-    public boolean isInfant() {
-        return this.travelerType.isInfant();
     }
 
     public TravelerType getTravelerType() {
