@@ -61,37 +61,13 @@ public class FlightSearchApp {
     private static void doSearch(SearchService<FlightSearchResult> flightSearchService, String origin, String destination, Integer adults, Integer children, Integer infants, LocalDate departure, Search search) {
         FlightSearchResult flightSearchResult = flightSearchService.search(search);
 
-        StringBuilder informationSb = new StringBuilder();
-        informationSb = informationSb
-                .append("Results for Flight from ")
-                .append(origin)
-                .append(" to ")
-                .append(destination)
-                .append(" and ")
-                .append(adults)
-                .append(" adults")
-                .append(", ")
-                .append(children)
-                .append(" children")
-                .append(", ")
-                .append(infants)
-                .append(" infants")
-                .append(" on the date ")
-                .append(departure);
-        System.out.println(informationSb.toString());
+        final String informationPattern = "Results for Flight from %s to %s and %s adults, %s children, %s infants on the date %s\n";
+        System.out.printf(informationPattern, origin, destination, adults, children, infants, departure);
 
         if (flightSearchResult.isEmpty()) {
             System.out.println("no flights available");
         } else {
-            flightSearchResult.getResult().forEach(flightSummary -> {
-                String summarySb = "* " +
-                        flightSummary.getFlight().getAirlineFlightNumber() +
-                        ", " +
-                        flightSummary.getTotalPrice() +
-                        " €";
-                System.out.println(summarySb);
-            });
+            flightSearchResult.getResult().forEach(flightSummary ->  System.out.printf("* %s, %s €\n", flightSummary.getFlight().getAirlineFlightNumber(), flightSummary.getTotalPrice()) );
         }
     }
-
 }

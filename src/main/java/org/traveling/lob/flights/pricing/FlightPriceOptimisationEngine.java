@@ -28,7 +28,7 @@ public class FlightPriceOptimisationEngine implements PriceOptimisationEngine<Fl
 
         lobs.forEach((lob) -> {
             travelers.getTravelers().forEach((traveler) -> {
-                orderedRules.stream().forEach((priceRule) -> {
+                this.orderedRules.forEach((priceRule) -> {
                     PriceOptimisation currentPriceOptimisation = getPriceOptimisationForFlightAndTraveler(lob, traveler, optimisedPrices);
                     PriceOptimisation updatedPriceOptimisation = priceRule.apply(currentPriceOptimisation, lob, traveler, departure);
                     optimisedPrices.get(lob).put(traveler, updatedPriceOptimisation);
