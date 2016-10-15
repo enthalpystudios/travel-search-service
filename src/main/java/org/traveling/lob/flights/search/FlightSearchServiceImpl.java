@@ -21,13 +21,13 @@ public class FlightSearchServiceImpl implements SearchService<FlightSearchResult
     private final FlightsService flightsService;
     private final PriceOptimisationEngine priceOptimisationEngine;
 
-    public FlightSearchServiceImpl(FlightsService flightsService, PriceOptimisationEngine priceOptimisationEngine) {
+    public FlightSearchServiceImpl(final FlightsService flightsService, final PriceOptimisationEngine priceOptimisationEngine) {
         this.flightsService = flightsService;
         this.priceOptimisationEngine = priceOptimisationEngine;
     }
 
     @Override
-    public FlightSearchResult search(Search search) {
+    public FlightSearchResult search(final Search search) {
         Optional<List<Flight>> maybeFlights = flightsService.lookup(search.getOrigin(), search.getDestination());
         Travelers travelers = search.getTravelers();
         LocalDate departure = search.getDeparture();
@@ -58,5 +58,4 @@ public class FlightSearchServiceImpl implements SearchService<FlightSearchResult
 
         return flightSummaries;
     }
-
 }

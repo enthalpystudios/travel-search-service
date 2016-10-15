@@ -13,13 +13,13 @@ public class FlightsServiceImpl implements FlightsService {
     private final FlightsDAO flightsDAO;
     private final AirportDAO airportDAO;
 
-    public FlightsServiceImpl(FlightsDAO flightsDAO, AirportDAO airportDAO) {
+    public FlightsServiceImpl(final FlightsDAO flightsDAO, final AirportDAO airportDAO) {
         this.flightsDAO = flightsDAO;
         this.airportDAO = airportDAO;
     }
 
     @Override
-    public Optional<List<Flight>> lookup(String origin, String destination) {
+    public Optional<List<Flight>> lookup(final String origin, final String destination) {
         Optional<Airport> originAirport = this.airportDAO.findByCode(origin);
         Optional<Airport> destinationAirport = this.airportDAO.findByCode(destination);
 

@@ -10,6 +10,6 @@ import java.util.Map;
 
 public interface PriceOptimisationEngine<T extends LineOfBusiness> {
 
-    Map<T, Map<Traveler, PriceOptimisation>> optimise(List<T> lobs, Travelers travelers, LocalDate departure);
+    Map<T, Map<Traveler, PriceOptimisation>> optimise(final List<T> lobs, final Travelers travelers, final LocalDate departure);
 
 }

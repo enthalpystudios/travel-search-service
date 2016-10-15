@@ -11,42 +11,42 @@ public class SearchBuilder {
     private Integer infants = 0;
     private LocalDate departure;
 
-    public SearchBuilder withOrigin(String origin) {
+    public SearchBuilder withOrigin(final String origin) {
         assert origin != null;
         assert !origin.trim().equals("");
         this.origin = origin;
         return this;
     }
 
-    public SearchBuilder withDestination(String destination) {
+    public SearchBuilder withDestination(final String destination) {
         assert destination != null;
         assert !destination.trim().equals("");
         this.destination = destination;
         return this;
     }
 
-    public SearchBuilder withAdults(Integer adults) {
+    public SearchBuilder withAdults(final Integer adults) {
         assert adults != null;
         assert adults >= 0;
         this.adults = adults;
         return this;
     }
 
-    public SearchBuilder withChildren(Integer children) {
+    public SearchBuilder withChildren(final Integer children) {
         assert children != null;
         assert children >= 0;
         this.children = children;
         return this;
     }
 
-    public SearchBuilder withInfants(Integer infants) {
+    public SearchBuilder withInfants(final Integer infants) {
         assert infants != null;
         assert infants >= 0;
         this.infants = infants;
         return this;
     }
 
-    public SearchBuilder withDeparture(LocalDate departure) {
+    public SearchBuilder withDeparture(final LocalDate departure) {
         assert departure != null;
         assert infants >= 0;
         this.departure = departure;

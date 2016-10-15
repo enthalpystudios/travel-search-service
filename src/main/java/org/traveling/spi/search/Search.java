@@ -11,7 +11,7 @@ public class Search {
     private final Travelers travelers;
     private final LocalDate departure;
 
-    Search(String origin, String destination, Integer adults, Integer children, Integer infants, LocalDate departure) {
+    Search(final String origin, final String destination, final Integer adults, final Integer children, final Integer infants, final LocalDate departure) {
         this.origin = origin;
         this.destination = destination;
         this.travelers = new Travelers(adults, infants, children);

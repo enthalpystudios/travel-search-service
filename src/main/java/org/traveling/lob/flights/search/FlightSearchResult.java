@@ -7,7 +7,7 @@ import org.traveling.spi.search.SearchResult;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlightSearchResult implements SearchResult<Flight> {
+public final class FlightSearchResult implements SearchResult<Flight> {
 
     private List<FlightSummary> result;
     private boolean isEmpty = true;
@@ -16,7 +16,7 @@ public class FlightSearchResult implements SearchResult<Flight> {
         return new FlightSearchResult(new ArrayList<>());
     }
 
-    public FlightSearchResult(List<FlightSummary> result) {
+    public FlightSearchResult(final List<FlightSummary> result) {
         this.result = result;
         this.isEmpty = result == null || result.isEmpty();
     }

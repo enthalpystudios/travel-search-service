@@ -1,11 +1,11 @@
 package org.traveling.lob.flights.domain;
 
-public class Airport {
+public final class Airport {
 
     private final String code;
     private final String city;
 
-    public Airport(String code, String city) {
+    public Airport(final String code, final String city) {
         this.code = code;
         this.city = city;
     }

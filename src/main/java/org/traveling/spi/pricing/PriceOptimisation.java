@@ -5,14 +5,14 @@ import org.traveling.domain.traveler.Traveler;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PriceOptimisation {
+public final class PriceOptimisation {
 
     private final Float base;
     private final Traveler traveler;
     private final List<String> reasons = new ArrayList<>();
     private Float optimised;
 
-    private PriceOptimisation(Float base, Traveler traveler) {
+    private PriceOptimisation(final Float base, final Traveler traveler) {
         this.base = base;
         this.optimised = base;
         this.traveler = traveler;
@@ -30,11 +30,11 @@ public class PriceOptimisation {
         return traveler;
     }
 
-    public static PriceOptimisation base(Float base, Traveler traveler) {
+    public static PriceOptimisation base(final Float base, final Traveler traveler) {
         return new PriceOptimisation(base, traveler);
     }
 
-    public PriceOptimisation update(Float optimised, String reason) {
+    public PriceOptimisation update(final Float optimised, final String reason) {
         this.optimised = optimised;
         this.reasons.add(reason);
         return this;

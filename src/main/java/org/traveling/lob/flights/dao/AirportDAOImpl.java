@@ -9,12 +9,12 @@ public class AirportDAOImpl implements AirportDAO {
 
     private final Map<String, Airport> airports;
 
-    public AirportDAOImpl(Map<String, Airport> airports) {
+    public AirportDAOImpl(final Map<String, Airport> airports) {
         this.airports = airports;
     }
 
     @Override
-    public Optional<Airport> findByCode(String code) {
+    public Optional<Airport> findByCode(final String code) {
         return Optional.ofNullable(airports.get(code));
     }
 }

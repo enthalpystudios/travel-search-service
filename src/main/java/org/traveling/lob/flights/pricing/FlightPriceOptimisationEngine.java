@@ -16,14 +16,16 @@ public class FlightPriceOptimisationEngine implements PriceOptimisationEngine<Fl
 
     private final List<PriceRule<Flight>> orderedRules;
 
-    public FlightPriceOptimisationEngine(List<PriceRule<Flight>> orderedRules) {
+    public FlightPriceOptimisationEngine(final List<PriceRule<Flight>> orderedRules) {
         assert orderedRules != null;
         assert !orderedRules.isEmpty();
         this.orderedRules = orderedRules;
     }
 
     @Override
-    public Map<Flight, Map<Traveler, PriceOptimisation>> optimise(List<Flight> lobs, Travelers travelers, LocalDate departure) {
+    public Map<Flight, Map<Traveler, PriceOptimisation>> optimise(final List<Flight> lobs,
+                                                                  final Travelers travelers,
+                                                                  final LocalDate departure) {
         Map<Flight, Map<Traveler, PriceOptimisation>> optimisedPrices = new HashMap<>();
 
         lobs.forEach((lob) -> {
@@ -38,9 +40,9 @@ public class FlightPriceOptimisationEngine implements PriceOptimisationEngine<Fl
         return optimisedPrices;
     }
 
-    private PriceOptimisation getPriceOptimisationForFlightAndTraveler(Flight flight,
-                                                                       Traveler traveler,
-                                                                       Map<Flight, Map<Traveler, PriceOptimisation>> allOptimisedPrices) {
+    private PriceOptimisation getPriceOptimisationForFlightAndTraveler(final Flight flight,
+                                                                       final Traveler traveler,
+                                                                       final Map<Flight, Map<Traveler, PriceOptimisation>> allOptimisedPrices) {
         allOptimisedPrices.putIfAbsent(flight, new HashMap<>());
         allOptimisedPrices.get(flight).putIfAbsent(traveler, PriceOptimisation.base(flight.getPrice(), traveler));
         return allOptimisedPrices.get(flight).get(traveler);

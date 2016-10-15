@@ -2,15 +2,15 @@ package org.traveling.lob.flights.domain;
 
 import org.traveling.domain.LineOfBusiness;
 
-public class Flight implements LineOfBusiness {
+public final class Flight implements LineOfBusiness {
 
-    private Airport origin;
-    private Airport destination;
-    private Airline airline;
-    private String flightNumber;
-    private Float price;
+    private final Airport origin;
+    private final Airport destination;
+    private final Airline airline;
+    private final String flightNumber;
+    private final Float price;
 
-    public Flight(Airport origin, Airport destination, Airline airline, String flightNumber, Float price) {
+    public Flight(final Airport origin, final Airport destination, final Airline airline, final String flightNumber, final Float price) {
         this.origin = origin;
         this.destination = destination;
         this.airline = airline;

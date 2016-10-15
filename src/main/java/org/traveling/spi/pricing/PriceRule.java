@@ -7,6 +7,6 @@ import java.time.LocalDate;
 
 public interface PriceRule<T extends LineOfBusiness> {
 
-    PriceOptimisation apply(PriceOptimisation currentPriceOptimisation, T lob, Traveler traveler, LocalDate departure);
+    PriceOptimisation apply(final PriceOptimisation currentPriceOptimisation, final T lob, Traveler traveler, final LocalDate departure);
 
 }

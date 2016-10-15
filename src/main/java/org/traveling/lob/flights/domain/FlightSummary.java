@@ -5,13 +5,13 @@ import org.traveling.spi.pricing.PriceOptimisation;
 
 import java.util.*;
 
-public class FlightSummary {
+public final class FlightSummary {
 
     private final Flight flight;
-    private Float lazyTotalPrice = null;
     private final List<PriceOptimisation> priceOptimisations;
+    private Float lazyTotalPrice = null;
 
-    public FlightSummary(Flight flight, List<PriceOptimisation> priceOptimisations) {
+    public FlightSummary(final Flight flight, final List<PriceOptimisation> priceOptimisations) {
         this.flight = flight;
         this.priceOptimisations = priceOptimisations;
     }

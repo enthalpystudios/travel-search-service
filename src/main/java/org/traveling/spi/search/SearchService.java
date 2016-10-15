@@ -5,6 +5,6 @@ import org.traveling.domain.LineOfBusiness;
 
 public interface SearchService<T extends SearchResult<? extends LineOfBusiness>> {
 
-    T search(Search search);
+    T search(final Search search);
 
 }

@@ -11,12 +11,12 @@ public class FlightsDAOImpl implements FlightsDAO {
 
     private final Map<Airport, Map<Airport, List<Flight>>> flights;
 
-    public FlightsDAOImpl(Map<Airport, Map<Airport, List<Flight>>> flights) {
+    public FlightsDAOImpl(final Map<Airport, Map<Airport, List<Flight>>> flights) {
         this.flights = flights;
     }
 
     @Override
-    public Optional<List<Flight>> findByOriginAndDestination(Airport origin, Airport destination) {
+    public Optional<List<Flight>> findByOriginAndDestination(final Airport origin, final Airport destination) {
         if (flights.containsKey(origin)) {
             Map<Airport, List<Flight>> destinationsForOrigin = flights.get(origin);
             List<Flight> flightsForDestination = destinationsForOrigin.get(destination);
