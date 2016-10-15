@@ -37,12 +37,11 @@ public class FlightSummary {
 
     public Map<TravelerType, List<PriceOptimisation>> asQueryable() {
         Map<TravelerType, List<PriceOptimisation>> queryable = new HashMap<>();
-        for (PriceOptimisation priceOptimisation : this.getPriceOptimisations()) {
+        this.getPriceOptimisations().forEach((priceOptimisation) -> {
             TravelerType travelerType = priceOptimisation.getTraveler().getTravelerType();
             queryable.putIfAbsent(travelerType, new ArrayList<>());
             queryable.get(travelerType).add(priceOptimisation);
-        }
+        });
         return queryable;
     }
-
 }

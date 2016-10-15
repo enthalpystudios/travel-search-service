@@ -49,13 +49,13 @@ public class FlightSearchServiceImpl implements SearchService<FlightSearchResult
 
     private List<FlightSummary> toFlightSummaries(Map<Flight, Map<Traveler, PriceOptimisation>> priceOptimisationsForFlights) {
         List<FlightSummary> flightSummaries = new ArrayList<>();
-        for (Map.Entry<Flight, Map<Traveler, PriceOptimisation>> priceForFlightEntry : priceOptimisationsForFlights.entrySet()) {
 
+        priceOptimisationsForFlights.entrySet().forEach((priceForFlightEntry) -> {
             Flight flight = priceForFlightEntry.getKey();
             List<PriceOptimisation> priceOptimisations = new ArrayList<>(priceForFlightEntry.getValue().values());
             flightSummaries.add(new FlightSummary(flight, priceOptimisations));
+        });
 
-        }
         return flightSummaries;
     }
 

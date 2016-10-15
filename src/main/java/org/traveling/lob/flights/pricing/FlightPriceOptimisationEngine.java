@@ -26,18 +26,15 @@ public class FlightPriceOptimisationEngine implements PriceOptimisationEngine<Fl
     public Map<Flight, Map<Traveler, PriceOptimisation>> optimise(List<Flight> lobs, Travelers travelers, LocalDate departure) {
         Map<Flight, Map<Traveler, PriceOptimisation>> optimisedPrices = new HashMap<>();
 
-        for (Flight lob : lobs) {
-            for (Traveler traveler : travelers.getTravelers()) {
-                for (PriceRule<Flight> priceRule : orderedRules) {
-
+        lobs.forEach((lob) -> {
+            travelers.getTravelers().forEach((traveler) -> {
+                orderedRules.stream().forEach((priceRule) -> {
                     PriceOptimisation currentPriceOptimisation = getPriceOptimisationForFlightAndTraveler(lob, traveler, optimisedPrices);
                     PriceOptimisation updatedPriceOptimisation = priceRule.apply(currentPriceOptimisation, lob, traveler, departure);
-
                     optimisedPrices.get(lob).put(traveler, updatedPriceOptimisation);
-
-                }
-            }
-        }
+                });
+            });
+        });
         return optimisedPrices;
     }
 

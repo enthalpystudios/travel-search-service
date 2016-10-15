@@ -1,5 +1,7 @@
 package org.traveling.util;
 
+import static java.util.Arrays.asList;
+
 import org.traveling.lob.flights.domain.Airline;
 import org.traveling.lob.flights.domain.Airport;
 import org.traveling.lob.flights.domain.Flight;
@@ -21,10 +23,7 @@ public class FlightDataSetLoader {
     private final Map<String, Airline> airlinesDataSet = new HashMap<>();
     private final Map<Airline, Float> airlineInfantPricesDataSet = new HashMap<>();
     private final Map<Airport, Map<Airport, List<Flight>>> flightsDataSet = new HashMap<>();
-    private final List<PriceRule<Flight>> priceRules = new ArrayList<PriceRule<Flight>>() {{
-        add(new DaysDeparturePriceRule());
-        add(new PassengerTypePriceRule(airlineInfantPricesDataSet));
-    }};
+    private final List<PriceRule<Flight>> priceRules = asList(new DaysDeparturePriceRule(), new PassengerTypePriceRule(airlineInfantPricesDataSet));
 
     public FlightDataSetLoader load(String flightsFileName, String airportsFileName, String airlinesFileName) {
         try {
@@ -108,7 +107,6 @@ public class FlightDataSetLoader {
         List<Flight> flightsForOriginAndDestination = destinationsForOriginMap.getOrDefault(destination, new ArrayList<>());
         flightsForOriginAndDestination.add(flight);
         destinationsForOriginMap.put(destination, flightsForOriginAndDestination);
-
     }
 
 }
